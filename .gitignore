@@ -3,3 +3,8 @@
 .vscode
 
 *.zip
+
+# Node/JS
+node_modules
+.parcel-cache
+dist

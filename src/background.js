@@ -1,7 +1,6 @@
 findAllURL = function changeAllURL(text){
-    var current = window.location.href;
+    const current = window.location.href;
     if(current.startsWith(text)){
-      document.documentElement.innerHTML = '';
       document.documentElement.innerHTML = 'Domain is blocked';
       document.documentElement.scrollTop = 0;
     }
