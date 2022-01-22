@@ -2,5 +2,15 @@
     "name": "Playwright Paladin",
     "description": "Helpful tools for all writers",
     "version": "1.0",
-    "manifest_version": 1
+    "manifest_version": 1,
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "https://www.netflix.com/*",
+        "http://www.youtube.com/*",
+        "http://docs.google.com/*"
+    ]
 }
