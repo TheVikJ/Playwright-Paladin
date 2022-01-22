@@ -9,8 +9,6 @@
     "permissions": [
         "webRequest",
         "webRequestBlocking",
-        "https://www.netflix.com/*",
-        "http://www.youtube.com/*",
         "http://docs.google.com/*"
     ]
 }
