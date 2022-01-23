@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 
 function ParagraphDisplay({paragraphs}) {
     return (
-        <div className={'shadow mb-2 scrollbar mx-auto mt-2 w-full md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg grow-[2] overflow-y-scroll outline outline-1 outline-gray-300 rounded-lg p-5'}>
+        <div className={'shadow mb-2 scrollbar mx-auto mt-2 w-full md:max-w-screen-sm lg:max-w-screen-md 2xl:max-w-screen-lg grow-[2] overflow-y-scroll outline outline-1 outline-gray-300 rounded-lg p-5'}>
             {paragraphs.map((line, index) => {
                 return (
                     <p key={index} className={"mb-4"}>

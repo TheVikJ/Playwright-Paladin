@@ -3,6 +3,9 @@ import React, {useEffect, useState} from "react";
 import InputHandler from "../components/InputHandler";
 import ParagraphDisplay from "../components/ParagraphDisplay";
 import Button from "../components/UI/Button";
+import HomeLogo from "../components/HomeLogo";
+import useUser from "../hooks/useUser";
+import Loading from "../components/UI/Loading";
 
 const getParagraphFromText = (text) => {
     let paragraphs = text.split('\n\n')
@@ -54,10 +57,17 @@ export default function Home() {
         setIsTyping(!isTyping)
     }
 
+    const {loading, loggedIn} = useUser();
+
+    if (loading) {
+        return <Loading/>
+    }
+
 
     return (
         <main className={'flex flex-col h-screen'}>
             <MetaDecorator title={"Home"} description={"Productivity application for writers"}/>
+            <HomeLogo/>
 
             {/*<div className={"fixed top-0 right-0 bg-white rounded-lg mt-3 mr-3 outline outline-1 outline-gray-300 px-4 py-3 shadow"}>*/}
             {/*<div className={'flex flex-col fixed top-0 right-0 mt-3 mr-3'}>*/}
@@ -75,7 +85,7 @@ export default function Home() {
             <div className="mb-1 pt-0 w-full">
                 <input type="text"
                        placeholder="Document Heading"
-                       className="mx-auto font-bold block text-lg mt-4 w-full md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg px-3 py-4 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-base border border-blueGray-300 w-full outline outline-1 outline-gray-300 focus:bg-white focus:border-blue-600 focus:outline-none"/>
+                       className="mx-auto font-bold block text-lg mt-4 w-full md:max-w-screen-sm lg:max-w-screen-md 2xl:max-w-screen-lg px-3 py-4 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-base border border-blueGray-300 w-full outline outline-1 outline-gray-300 focus:bg-white focus:border-blue-600 focus:outline-none"/>
             </div>
             {isTyping && <ParagraphDisplay paragraphs={paragraphs}/>}
             <InputHandler text={text} setText={setText}/>
