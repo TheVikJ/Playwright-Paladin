@@ -1,4 +1,4 @@
-const domain = 'localhost:5000';
+const domain = '45.79.125.41';
 const basePath = `http://${domain}/api`;
 
 const authKey = 'auth';
