@@ -4,6 +4,9 @@ const crypto = require("crypto");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
+const mongoose = require("mongoose");
+const User = require("./models/user.model");
+const Article = require("./models/article.model");
 
 const PORT = 5000;
 
@@ -34,6 +37,11 @@ app.use(
     credentials: true,
   })
 );
+
+mongoose.connect(process.env.MONGO_URL).catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
 
 app.post("/api/auth/sendOTP", (req, res) => {
   if (!req.body || !req.body.phone) {
@@ -116,7 +124,7 @@ app.post("/api/auth/refresh", (req, res) => {
   });
 });
 
-app.post("/api/auth/verifyOTP", (req, res) => {
+app.post("/api/auth/verifyOTP", async (req, res) => {
   const phone = req.body.phone;
   const hash = req.body.hash;
   const otp = req.body.otp;
@@ -145,6 +153,13 @@ app.post("/api/auth/verifyOTP", (req, res) => {
   });
   refreshTokens.push(refreshToken);
 
+  try {
+    const user = User.findOne({ phone });
+    if (!user) {
+      await User.create({ phone, posts: [] });
+    }
+  } catch {}
+
   res
     .status(202)
     .cookie("accessToken", accessToken, {
@@ -167,9 +182,23 @@ app.post("/api/auth/logout", (req, res) => {
     .send({ message: "User Logged Out" });
 });
 
-app.get("/api/auth/user", authenticateUser, (req, res) => {
+app.get("/api/auth/user", authenticateUser, async (req, res) => {
   const phone = req.phone;
-  return res.status(200).send({ phone });
+  let user = User.findOne({ phone }).populate("posts").exec();
+  console.log(user);
+  if (!user) {
+    user = await User.create({ phone, posts: [] });
+  }
+
+  return res.status(200).send(user);
+});
+
+app.post("/api/new", authenticateUser, async (req, res) => {
+  if (!req.body.header || !req.body.content) {
+    return res.send(400).send({ message: "Invalid Parameters" });
+  }
+
+  const phone = req.phone;
 });
 
 app.listen(PORT, () => {
