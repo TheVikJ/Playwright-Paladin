@@ -59,6 +59,10 @@ app.post('/api/auth/sendOTP', (req, res) => {
 const authenticateUser = async (req, res, next) => {
     const accessToken = req.cookies.accessToken
 
+    if (!accessToken) {
+        return res.status(403).send({message: 'User not authenticated'})
+    }
+
     jwt.verify(accessToken, jwtAuthToken, async (err, phone) => {
         if (phone) {
             req.phone = phone

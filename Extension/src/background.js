@@ -1,4 +1,6 @@
 chrome.runtime.onInstalled.addListener(() => {
+    chrome.storage.sync.set({blocked: ['youtube.com', 'netflix.com', 'instagram.com']})
+
     chrome.storage.sync.get(["blocked"], function (local) {
         if (!Array.isArray(local.blocked)) {
             chrome.storage.sync.set({ blocked: [] });
