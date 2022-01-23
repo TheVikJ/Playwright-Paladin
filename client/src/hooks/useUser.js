@@ -10,8 +10,7 @@ const useUser = () => {
     });
 
     const loading = !data && !error;
-    // const loggedIn = !error && data;
-    const loggedIn = error;
+    const loggedIn = !error && data;
 
     return {
         loading,
