@@ -1,4 +1,4 @@
-const domain = '45.79.125.41';
+const domain = 'backend.playwrightpaladin.co';
 const basePath = `http://${domain}/api`;
 
 const authKey = 'auth';
