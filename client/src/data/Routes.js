@@ -1,5 +1,5 @@
 const domain = 'backend.playwrightpaladin.co';
-const basePath = `http://${domain}/api`;
+const basePath = `https://${domain}/api`;
 
 const authKey = 'auth';
 const authBaseRoute = `${basePath}/${authKey}`;
