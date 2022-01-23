@@ -30,10 +30,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin:
-      prodEnv === "development"
-        ? "http://localhost:3000"
-        : "https://playwrightpaladin.co",
+    origin: prodEnv === "development" ? "http://localhost:5000" : "https://backend.playwrightpaladin.co",
     credentials: true,
   })
 );
