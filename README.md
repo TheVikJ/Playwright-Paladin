@@ -1,8 +1,8 @@
 # Playwright-Paladin
 ## Playwright-Paladin was created for MLH's Thehacktrical Hackathon
-[Our Demo Video](https://youtu.be/N-XfWpd_dB4)
-[Our Devpost](https://devpost.com/software/playwrightpaladin) 
-[Try Playwright Paladin](http://playwrightpaladin.co/)
+[Our Demo Video](https://youtu.be/N-XfWpd_dB4)  
+[Our Devpost](https://devpost.com/software/playwrightpaladin)  
+[Try Playwright Paladin](http://playwrightpaladin.co/)  
 
 ## Inspiration 🧠
 
